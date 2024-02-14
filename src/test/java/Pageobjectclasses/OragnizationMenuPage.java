@@ -1,5 +1,6 @@
 package Pageobjectclasses;
 
+import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.pagefactory.ByAll;
@@ -8,7 +9,11 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import javax.naming.CommunicationException;
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class OragnizationMenuPage extends Browser {
     private WebDriver driver = null;
@@ -24,76 +29,147 @@ public class OragnizationMenuPage extends Browser {
         Thread.sleep(3000);
 
         driver.findElement(By.linkText("Organizations")).click();
-        driver.findElement(By.linkText("Add Organization")).click();
-
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//input[@id=\"company\"]")).sendKeys("ABC PVTLTD");
-        driver.findElement(By.xpath("//input[@id='gst_number']")).sendKeys("27AAACH7409R1Z1");
-        driver.findElement(By.cssSelector("#bd-email")).sendKeys("abc1@gmail.com");
-        driver.findElement(By.xpath("//input[@id='bd-pan-number']")).sendKeys("AAOCS4553K");
-        driver.findElement(By.cssSelector("#company_code")).sendKeys("123445678ab_c");
-        driver.findElement(By.cssSelector("#street")).sendKeys("Shree krupa Apt,Roadno.-2,sector-12");
-        Thread.sleep(2000);
-
-        driver.findElement(By.cssSelector("#landmark")).sendKeys("Near Aayppa Mandir");
-        driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[9]/div[1]/div[1]/input[1]")).sendKeys("NaviMumbai");
-        driver.findElement(By.cssSelector("#postal-code")).sendKeys("400703");
-        driver.findElement(By.cssSelector("#state")).sendKeys("Maharashtra");
-        Thread.sleep(3000);
-
-        driver.findElement(By.cssSelector("#country")).click();
-        Select testDropDown = new Select(driver.findElement(By.cssSelector("#country")));
-        testDropDown.selectByVisibleText("Austria");
-
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("scrollBy(0,500)", "");
-
-        driver.findElement(By.xpath("//input[@type='checkbox']")).click();
-        // Thread.sleep(3000);
-
-
-        js.executeScript("scrollBy(0,800)", "");
-        //driver.findElement(By.xpath("//input[@type='submit']")).click();
-        Thread.sleep(3000);
-        driver.findElement(By.xpath("//button[@class='float-right mb-3 mt-3 btn btn-primary']")).click();
-
 
     }
+
+
+//    public void AddOrganizationandViewOrganizationsubmenu() throws Exception {
+//        driver.navigate().to("https://staging.dx0oqxblmo7a7.amplifyapp.com/dashboard");
+//        String Actual_title = driver.getTitle();
+//        String Expected_Title = "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css";
+//        Assert.assertEquals(Actual_title, Expected_Title);
+//    }
+//
+//    public void Add_organization_menu() throws Exception {
+//
+//        driver.findElement(By.linkText("Add Organization")).click();
+//    }
+//
+//    public void super_admin_see_the_detail_of_Add_organization() throws Exception {
+//
+//        driver.findElement(By.xpath("//input[@id=\"company\"]")).sendKeys("ABC PVTLTD");
+//        driver.findElement(By.xpath("//input[@id='gst_number']")).sendKeys("27AAACH7409R1Z1");
+//        driver.findElement(By.cssSelector("#bd-email")).sendKeys("abc1@gmail.com");
+//        driver.findElement(By.xpath("//input[@id='bd-pan-number']")).sendKeys("AAOCS4553K");
+//        driver.findElement(By.cssSelector("#company_code")).sendKeys("123445678ab_c");
+//        driver.findElement(By.cssSelector("#street")).sendKeys("Shree krupa Apt,Roadno.-2,sector-12");
+//        Thread.sleep(2000);
+//
+//        driver.findElement(By.cssSelector("#landmark")).sendKeys("Near Aayppa Mandir");
+//        driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[9]/div[1]/div[1]/input[1]")).sendKeys("NaviMumbai");
+//        driver.findElement(By.cssSelector("#postal-code")).sendKeys("400703");
+//        driver.findElement(By.cssSelector("#state")).sendKeys("Maharashtra");
+//        Thread.sleep(3000);
+//
+//        driver.findElement(By.cssSelector("#country")).click();
+//        Select testDropDown = new Select(driver.findElement(By.cssSelector("#country")));
+//        testDropDown.selectByVisibleText("Austria");
+//
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//        js.executeScript("scrollBy(0,500)", "");
+//
+//        driver.findElement(By.xpath("//input[@type='checkbox']")).click();
+//        Thread.sleep(3000);
+//
+//        //Save & Next button
+//
+//        // js.executeScript("scrollBy(0,800)", "");
+//        //driver.findElement(By.xpath("//input[@type='submit']")).click();
+//        //Thread.sleep(3000);
+//        //driver.findElement(By.xpath("//button[@class='float-right mb-3 mt-3 btn btn-primary']")).click();
+//
+//    }
 
     public void ViewOrganization() throws Exception {
         Thread.sleep(3000);
 
-        driver.findElement(By.xpath("//a[contains(text(),'View Organizations')]")).click();
-
+        driver.findElement(By.xpath("//a[normalize-space()='View Organizations']")).click();
     }
-    public void serachoption() {
+
+    public void view_organization_details() {
+
+        Assert.assertTrue(driver.findElement(By.xpath("//li[contains(text(),'List Organizations')]")).isDisplayed());
+        System.out.println("" + driver.findElement(By.xpath("//li[contains(text(),'List Organizations')] ")).isDisplayed() + "");
+        System.out.println("ADMIN IS ON THE View_organization page");
+    }
+
+    public void searchoption() throws Exception {
 
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//input[@Id='filter-input-focus']")));
         driver.findElement(By.xpath("//input[@Id='filter-input-focus']")).sendKeys("1234567");
+        Thread.sleep(3000);
+
+
+        Actions actions = new Actions(driver);
+
+        actions.click(driver.findElement(By.xpath("//input[@Id='filter-input-focus']")))
+                .keyDown(Keys.CONTROL)
+                .sendKeys("a")
+                .keyUp(Keys.CONTROL)
+                .sendKeys(Keys.BACK_SPACE)
+                .build()
+                .perform();
+
+        //driver.findElement(By.xpath("//input[@Id='filter-input-focus']")).clear();
     }
-    public void statusoption() {
 
-        driver.findElement(By.xpath("//select[@class='form-select']")).click();
+    public void Relevant_Search_Results_Generated() {
+
+        Assert.assertTrue(driver.findElement(By.xpath("//span[contains(text(),'Search:')]")).isDisplayed());
+        System.out.println("" + driver.findElement(By.xpath("//span[contains(text(),'Search:')] ")).isDisplayed() + "");
+        System.out.println("ADMIN IS ON THE View_organization Search page");
     }
+//
+//    public void statusoption() {
+//
+//        driver.findElement(By.xpath("//select[@class='form-select']")).click();
+//    }
 
-    public void Statusdropdownoption() {
-
-        //Thread.sleep(2000);
+    public void Statusdropdownoption() throws Exception {
+        Thread.sleep(2000);
         WebElement Status_dropdown = driver.findElement(By.xpath("//select[@class='form-select']"));
+        Status_dropdown.click();
         Select Status_d = new Select(Status_dropdown);
         Status_d.selectByVisibleText("Active");
     }
-    public void viewiconoption() {
 
+    public void viewiconoption() throws Exception {
 
-        driver.findElement(By.xpath("//tbody/tr[1]/td[4]/a[1]/*[1]")).click();
+//        Actions actions = new Actions(driver);
+//        actions.moveToElement(driver.findElement(By.xpath("//tbody/tr[3]/td[4]/a[1]/*[1]")));
+//        actions.click();
+//        actions.build().perform();
+
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+////       wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody/tr[3]/td[4]/a[1]")));
+        Thread.sleep(2500);
+        driver.findElement(By.cssSelector("#root > div.c-app.c-default-layout > div.c-wrapper > div > main > div > div > div > div > div > div > div > div.table-responsive > table > tbody > tr:nth-child(3) > td.d-flex.flex-row.align-items-center > a > svg")).click();
+////
+//
     }
-        public void createadminuserbutton() {
-            driver.findElement(By.xpath("//button[contains(text(),'Create Admin User')]")).click();
-        }
 
-    public void basicemployeedetails() throws InterruptedException {
+    public void superadmin_can_see_organization_details() throws Exception {
+        Thread.sleep(3000);
+
+        Assert.assertTrue(driver.findElement(By.xpath("//li[contains(text(),'Edit Organization')]")).isDisplayed());
+        System.out.println("" + driver.findElement(By.xpath(" //li[contains(text(),'Edit Organization')]")).isDisplayed() + "");
+        System.out.println("ADMIN IS ABlE To VIEW EDIT ORGANIZATION TITLE");
+    }
+
+    public void createadminuserbutton() throws Exception {
+        Thread.sleep(2500);
+        driver.findElement(By.xpath("//button[normalize-space()='Create Admin User']")).click();
+    }
+
+    public void can_navigate_to_add_Employee_details_form() {
+        Assert.assertTrue(driver.findElement(By.xpath("//li[contains(text(),'Add Admin')]")).isDisplayed());
+        System.out.println("" + driver.findElement(By.xpath(" //li[contains(text(),'Add Admin')]")).isDisplayed() + "");
+        System.out.println("ADMIN IS ABlE To VIEW ADD EMPLOYEE DETAILS");
+    }
+
+
+    public void add_basic_employee_details() throws InterruptedException {
 
         Thread.sleep(3000);
 
@@ -118,94 +194,287 @@ public class OragnizationMenuPage extends Browser {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("scrollBy(0,500)", "");
 
-        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);","//input[@id='react-select-2-input']");
 
-        // Actions actions = new Actions(driver);
-        //actions.moveToElement(driver.findElement(By.xpath("//input[@id='react-select-2-input']")));
-        //actions.click();
-        //actions.sendKeys("Accounts");
-        // actions.build().perform();
+//        WebElement Dep= new WebDriverWait(driver, Duration.ofSeconds(30)).until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@id='react-select-2-input']")));
+//        Dep.click();
+//        Dep.sendKeys("Accounts");
+//
+        WebElement Dep = driver.findElement(By.xpath("//input[@id='react-select-2-input']"));
+        Dep.sendKeys("Accounts");
+        Dep.sendKeys(Keys.ENTER);
 
 
-        //driver.findElement(By.xpath("//input[@id='react-select-2-input']")).sendKeys("Accounts");
-        //driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[5]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]")).sendKeys("sales");
-        // driver.findElement(By.className("class=\" css-19bb58m\"")).sendKeys("Accounts");
-
+        Thread.sleep(2000);
         driver.findElement(By.xpath("//input[@id='flat_number']")).sendKeys("402");
         driver.findElement(By.xpath("//input[@id='building_name']")).sendKeys("Vishal Apt");
         driver.findElement(By.xpath("//input[@id='street']")).sendKeys("Kotwal nagar karjat");
 
 
-        js.executeScript("scrollBy(0,900)", "");
-
-        driver.findElement(By.xpath("//input[@id='landmark']")).sendKeys("Near Shri Ram bridge");
-        driver.findElement(By.xpath("//input[@id='city']")).sendKeys("Raigarh");
-        driver.findElement(By.xpath("//input[@id='postal-code']")).sendKeys("410201");
-        driver.findElement(By.xpath("//input[@id='state']")).sendKeys("Maharashtra");
-
-        Thread.sleep(2500);
-
-        driver.findElement(By.cssSelector("#country")).click();
-        Select drpCountry = new Select(driver.findElement(By.cssSelector("#country")));
-        drpCountry.selectByValue("Brazil");
-
         js.executeScript("scrollBy(0,500)", "");
 
+        driver.findElement(By.xpath("//input[@id='landmark']")).sendKeys("Near Shri Ram bridge");
+        driver.findElement(By.xpath("//input[@id='city']")).sendKeys("Dadar");
+        driver.findElement(By.xpath("//input[@id='postal-code']")).sendKeys("400014");
+        driver.findElement(By.xpath("//input[@id='state']")).sendKeys("Maharashtra");
+
+        //Thread.sleep(2000);
+//
+//        driver.findElement(By.id("country")).click();
+//        Select drpCountry = new Select(driver.findElement(By.id("country")));
+//        drpCountry.selectByVisibleText("Brazil");
+//
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        Select drpCountry = new Select(driver.findElement(By.id("country")));
+        //JavascriptExecutor executor = (JavascriptExecutor)driver;
+        //executor.executeScript("arguments[0].click();", driver.findElement(By.id("country")));
+        js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.id("country")));
+        drpCountry.selectByVisibleText("India");
+
+
+//        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+//       wait1.until(ExpectedConditions.visibilityOfElementLocated(By.id("country")));
+//        driver.findElement(By.id("country")).click();
+//        Select drpCountry = new Select(driver.findElement(By.id("country")));
+//        drpCountry.selectByVisibleText("Brazil");
+
+        //js.executeScript("scrollBy(0,500)", "");
+
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait1.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='MuiIconButton-label']")));
         driver.findElement(By.xpath("//span[@class='MuiIconButton-label']")).click();
 
-        driver.findElement(By.linkText("Save & Next")).click();
+
+        js.executeScript("scrollBy(0,700)", "");
+
+        Thread.sleep(3000);
+
+
+        driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/button[1]")).click();
+//        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='float-right my-3 btn btn-primary']")));
+//        driver.findElement(By.xpath("//button[@class='float-right my-3 btn btn-primary']")).click();
     }
 
-        //WebDriverWait wait1= new WebDriverWait(driver, Duration.ofSeconds(20));
-        // WebElement Communication = driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[2]/a[1]/*[1]"));
-        //js.executeScript("arguments[0].scrollIntoView();",driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[2]/a[1]/*[1]")));
-        //Communication.click();
+
+    //WebDriverWait wait1= new WebDriverWait(driver, Duration.ofSeconds(20));
+    // WebElement Communication = driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[2]/a[1]/*[1]"));
+    //js.executeScript("arguments[0].scrollIntoView();",driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[2]/a[1]/*[1]")));
+    //Communication.click();
 
 
-public void FillCommunication_details() {
+//    public void FillCommunication_details() {
+//
+//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".float-right.my-3.btn.btn-primary")));
+//        WebElement communicationdetails = driver.findElement(By.cssSelector(".float-right.my-3.btn.btn-primary"));
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", communicationdetails);
+//
+//
+//        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", communicationdetails);
+//
+//        //Phone Number
+//        driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//div[@class='row form-group']//div[1]//div[1]//input[1]")).sendKeys("9820313358");
+//
+//        //personal Emailid
+//        driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//div[@class='row form-group']//div[1]//div[1]//input[1]")).sendKeys("neha.lenka@gmail.com");
+//
+//        //Edit Button
+//        driver.findElement(By.xpath("//button[contains(text(),'Edit')]")).click();
+//
+//        //Action Button
+//        WebElement Action_dropdown=driver.findElement(By.xpath("//button[contains(text(),'Actions')]"));
+//        Action_dropdown.click();
+//        Select Status_A=new Select(Action_dropdown);
+//        Status_A.selectByVisibleText("Resst Password");
+
+//        //Previous button
+//        driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//button[@type='button'][normalize-space()='Previous']")).click();
+//
+//        //Save & next button on communication page
+//        driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//button[@class='float-right btn btn-primary'][normalize-space()='Save & Next']")).click();
+//
+//    }
+
+//  public void admin_add_Identity_Details() throws Exception{
+//
+//    driver.findElement(By.xpath("//button[contains(text(),'Edit')]")).click();
+//
+//    driver.findElement(By.xpath("//input[@placeholder='Enter Aadhar Number']")).sendKeys("5247 8003 4511");
+//      //File uplodaing browse
+//      String file_path= "E:\\Aparna Photos\\Other Document\\Adhar Card";
+//      driver.findElement(By.xpath("//body//div[@id='root']//div[@class='card-body']//div[@class='card-body']//div[1]//div[2]//div[1]//div[1]//div[3]")).sendKeys(file_path);
+//
+//    driver.findElement(By.xpath(" //input[@placeholder='Enter PAN Number']")).sendKeys("BPKPP7828D");
+//      //File uplodaing browse
+//      String filepath= "E:\\Aparna Photos\\Other Document\\Pan Card";
+//      driver.findElement(By.xpath("E:\\Aparna Photos\\Other Document\\Pan Card"));
+//
+//
+//      driver.findElement(By.xpath("//input[@id='driving-license']")).sendKeys("MH03 20080022135");
+//      //File uplodaing browse
+//      String choosefile ="E:\\Aparna Photos\\Educational Document\\SSC";
+//      driver.findElement(By.xpath("/div[@class='card card-accent-primary']//div[2]//div[2]//div[1]//div[1]//div[3]//div[1]")).sendKeys(choosefile);
+//
+//
+//      JavascriptExecutor js= (JavascriptExecutor) driver;
+//     js.executeScript("ScrollBy(0,500)");
+//
+//    driver.findElement(By.xpath("//input[@id='pf-number']")).sendKeys("MHBAN00187340000052518");
+//    driver.findElement(By.xpath("//input[@id='vehicle-number']")).sendKeys("MH 10DV 3456");
+//    driver.findElement(By.xpath("//input[@id='passport-number']")).sendKeys("J8369854");
+//
+//
+//    //Previou Button
+//      driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//button[@type='button'][normalize-space()='Previous']")).click();
+//
+//      //Save & Next button
+//      driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//button[@class='float-right btn btn-primary'][normalize-space()='Save & Next']")).click();
+//
+//    }
+//}
+
+//    public void Bank_Details() {
+//    driver.findElement(By.xpath("//button[contains(text(),'Edit')]")).click();
+//
+//    driver.findElement(By.xpath("//input[@id='bank-name']")).sendKeys("HDFC BANK");
+//    driver.findElement(By.xpath("//input[@id='ifsc-code']")).sendKeys("HFDC00026");
+//    driver.findElement(By.xpath("//input[@id='account-number']")).sendKeys("123456789");
+//    //previous button
+//     driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[2]/form[1]/div[1]/button[1]")).click();
+//     //Save & Next Button
+//        driver.findElement(By.xpath("//body/div[@id='root']/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[4]/div[1]/div[2]/form[1]/div[1]/button[2]")).click();
+//
+//
+//    }
+
+    public void Organization_status_details() {
+        driver.findElement(By.xpath("//a[contains(text(),'Organization Stats')]")).click();
+    }
+
+    public void can_see_organizationstatus_details() throws Exception {
+        Assert.assertTrue(driver.findElement(By.xpath("//a[contains(text(),'Home')]")).isDisplayed());
+        System.out.println("" + driver.findElement(By.xpath("//a[contains(text(),'Home')] ")).isDisplayed() + "");
+        System.out.println("ADMIN IS ABlE To VIEW ORGANIZATION STATUS DETAILS");
+    }
+
+    public void click_on_calendar() throws Exception {
+
+//        WebElement calendarIcon = driver.findElement(By.id("monthYear"));
+//        calendarIcon.click();
+
+//        WebElement calendarbox = driver.findElement(By.id("monthYear"));
+//        calendarbox.click();
+//        calendarbox.sendKeys("April 2022");
+
+        //driver.findElement(By.linkText("Clear")).click();
+        //((JavascriptExecutor) driver).executeScript("arguments[0].scrollTop += 100", calendarElement);
+    }
+
+    public void enter_the_search_keyword() throws Exception {
+        Thread.sleep(2000);
+
+        driver.findElement(By.xpath("//input[@id='filter-input-focus']")).sendKeys("14");
+
+        Actions actions = new Actions(driver);
+
+        actions.click(driver.findElement(By.xpath("//input[@id='filter-input-focus']")))
+                .keyDown(Keys.CONTROL)
+                .sendKeys("a")
+                .keyUp(Keys.CONTROL)
+                .sendKeys(Keys.BACK_SPACE)
+                .build()
+                .perform();
 
 
-    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
-    wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".float-right.my-3.btn.btn-primary")));
-    WebElement communicationdetails = driver.findElement(By.cssSelector(".float-right.my-3.btn.btn-primary"));
-    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", communicationdetails);
+    }
 
+    public void Relevant_search_is_generated() throws Exception {
 
-    ((JavascriptExecutor) driver).executeScript("arguments[0].click();", communicationdetails);
+        Assert.assertTrue(driver.findElement(By.xpath("//h3[contains(text(),'Organization Stats')]")).isDisplayed());
+        System.out.println("" + driver.findElement(By.xpath("//h3[contains(text(),'Organization Stats')] ")).isDisplayed() + "");
+        System.out.println("ADMIN IS ABlE To VIEW RELEVANT SEARCH DETAILS");
 
-    // Phone Number
-    //driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//div[@class='row form-group']//div[1]//div[1]//input[1]")).sendKeys("9820313358");
-
-    //personal Emailid
-    //driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//div[@class='row form-group']//div[1]//div[1]//input[1]")).sendKeys("neha.lenka@gmail.com");
-
-    //Previous button
-    //driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//button[@type='button'][normalize-space()='Previous']")).click();
-
-    //Save & next button on communication page
-    //driver.findElement(By.xpath("//div[@class='tab-pane active fade show']//button[@class='float-right btn btn-primary'][normalize-space()='Save & Next']")).click();
-
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("scrollBy(0,500)", "");
+    }
 }
-
-public void Identity(){
-     // driver.findElement(By.xpath("super admin can add Bank details")).sendKeys("6781 5338 1876");
-    // driver.findElement(By.xpath("//input[@placeholder='Enter PAN Number']")).sendKeys("BNZPM2501F");
-    // driver.findElement(By.xpath("//input[@id='driving-license']")).sendKeys("MH03 20080022135");
-    // driver.findElement(By.xpath("//input[@id='driving-license']")).sendKeys("MHBAN00187340000053518");
-    //driver.findElement(By.xpath("//input[@id='vehicle-number']")).sendKeys("MH 40BP 4231");
-    //driver.findElement(By.xpath("//input[@id='passport-number']")).sendKeys("L9630722");
-
-    //WebElement Browse = driver.findElement(By.xpath("//body//div[@id='root']//div[@class='card-body']//div[@class='card-body']//div[1]//div[2]//div[1]//div[1]//div[3]//div[1]"));
-    //Browse.sendKeys("E:\\Aparna Photos\\Other Document\\Adhar card");
+        //driver.findElement(By.xpath("//a[contains(text(),'11')]")).click();
 
 
+//    public void activities_menu() throws Exception {
+//
+//        driver.findElement(By.xpath("//*[text()='Activities']")).click();
+//
+//
+//    }
+//public void Admin_see_add_and_list_activities_submenu() {
+//
+//    Assert.assertTrue(driver.findElement(By.xpath("//h4[contains(text(),'Total Organizations')]")).isDisplayed());
+//    System.out.println("" + driver.findElement(By.xpath("//h4[contains(text(),'Total Organizations')] ")).isDisplayed() + "");
+//    System.out.println("ADMIN IS ABlE To SEE ADD & LIST ACTIVITIES ");
+//
+//}
+//public void Add_activities()throws Exception{
+//    driver.findElement(By.xpath("//a[contains(text(),'Add Activities')]")).click();
+//
+//    Thread.sleep(2000);
+//
+//    driver.findElement(By.id("title")).sendKeys(" Yoga");
+//    driver.findElement(By.id("frequency")).sendKeys("15 days");
+//
+//    driver.findElement(By.id("start_time")).sendKeys("09:30AM");
+//    driver.findElement(By.id("end_time")).sendKeys("10:00AM");
+//    driver.findElement(By.id("description")).sendKeys("Yoga activity every 15 days ");
+//    driver.findElement(By.id("total_points")).sendKeys("10");
+//
+//    Thread.sleep(2000);
+//
+// //for uploading lottie file
+//driver.findElement(By.xpath("//body[1]/div[1]/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[2]/div[1]/div[1]/div[2]")).click();
+//    Robot rb =new Robot();
+//    rb.delay(2000);
+//
+//    StringSelection ss= new StringSelection("file:///C:/Users/Admin/Downloads/sample1.json");
+//    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss,null);
+//
+//// to paste the link & then to release the button
+//    rb.keyPress(KeyEvent.VK_CONTROL);
+//    rb.keyPress(KeyEvent.VK_V);
+//    rb.delay(2000);
+//
+//    rb.keyRelease(KeyEvent.VK_CONTROL);
+//    rb.keyRelease(KeyEvent.VK_V);
+//    rb.delay(2000);
+//
+//    //Enter
+//    rb.keyPress(KeyEvent.VK_ENTER);
+//    rb.keyRelease(KeyEvent.VK_ENTER);
+//
+//
+//driver.findElement(By.xpath("//body[1]/div[1]/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[3]/div[1]/div[1]/div[3]/div[1]")).click();
+//    Robot rb1 =new Robot();
+//    rb1.delay(2500);
+//
+//    StringSelection ss1= new StringSelection("C:\\Users\\Admin\\Downloads\\Yoga image.jpg");
+//    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss1,null);
+//
+//    rb1.keyPress(KeyEvent.VK_CONTROL);
+//    rb1.keyPress(KeyEvent.VK_V);
+//    rb1.delay(2000);
+//
+//    rb1.keyRelease(KeyEvent.VK_CONTROL);
+//    rb1.keyRelease(KeyEvent.VK_V);
+//    rb1.delay(2000);
+////Enter
+//    rb1.keyPress(KeyEvent.VK_ENTER);
+//    rb1.keyRelease(KeyEvent.VK_ENTER);
+//
+//    driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+//
+//    }
+//}
 
-}
-
-public void Bank(){
-
-
-}
 
 
 
@@ -215,28 +484,5 @@ public void Bank(){
 
 
 
-
-
-
-
-
-
-       // driver.findElement(By.xpath("/html[1]/body[1]/div[1]/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/button[1]")).click();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
 
 

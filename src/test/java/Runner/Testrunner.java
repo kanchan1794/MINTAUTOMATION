@@ -7,8 +7,10 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/java/Featurefiles"},
         glue={"Stepdefinition"},
-        tags ="@Login or @Organization or @ViewOrganization or  @Vieworganizationsubmenu"
+        //tags ="@Login or @Organization or @ViewOrganization or @Vieworganizationsubmenu or @Organizationstatusmenu "
+        tags="@Login or @Practitioner"
 
 )
+
 public class Testrunner {
 }
