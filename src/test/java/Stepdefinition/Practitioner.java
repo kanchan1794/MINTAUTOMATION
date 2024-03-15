@@ -30,7 +30,7 @@ public class Practitioner extends Browser {
 
 
     @Then("Superadmin can add the details of practitioner persons")
-    public void superadminCanAddTheDetailsOfPractitionerPersons() {
+    public void superadminCanAddTheDetailsOfPractitionerPersons()throws Exception {
         Pobject.Superadmin_can_add_details();
         System.out.println("Superadmin can add the details of practitioner persons");
     }

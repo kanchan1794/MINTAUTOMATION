@@ -101,15 +101,7 @@ public class OragnizationMenuPage extends Browser {
         Thread.sleep(3000);
 
 
-        Actions actions = new Actions(driver);
 
-        actions.click(driver.findElement(By.xpath("//input[@Id='filter-input-focus']")))
-                .keyDown(Keys.CONTROL)
-                .sendKeys("a")
-                .keyUp(Keys.CONTROL)
-                .sendKeys(Keys.BACK_SPACE)
-                .build()
-                .perform();
 
         //driver.findElement(By.xpath("//input[@Id='filter-input-focus']")).clear();
     }
@@ -402,78 +394,6 @@ public class OragnizationMenuPage extends Browser {
         //driver.findElement(By.xpath("//a[contains(text(),'11')]")).click();
 
 
-//    public void activities_menu() throws Exception {
-//
-//        driver.findElement(By.xpath("//*[text()='Activities']")).click();
-//
-//
-//    }
-//public void Admin_see_add_and_list_activities_submenu() {
-//
-//    Assert.assertTrue(driver.findElement(By.xpath("//h4[contains(text(),'Total Organizations')]")).isDisplayed());
-//    System.out.println("" + driver.findElement(By.xpath("//h4[contains(text(),'Total Organizations')] ")).isDisplayed() + "");
-//    System.out.println("ADMIN IS ABlE To SEE ADD & LIST ACTIVITIES ");
-//
-//}
-//public void Add_activities()throws Exception{
-//    driver.findElement(By.xpath("//a[contains(text(),'Add Activities')]")).click();
-//
-//    Thread.sleep(2000);
-//
-//    driver.findElement(By.id("title")).sendKeys(" Yoga");
-//    driver.findElement(By.id("frequency")).sendKeys("15 days");
-//
-//    driver.findElement(By.id("start_time")).sendKeys("09:30AM");
-//    driver.findElement(By.id("end_time")).sendKeys("10:00AM");
-//    driver.findElement(By.id("description")).sendKeys("Yoga activity every 15 days ");
-//    driver.findElement(By.id("total_points")).sendKeys("10");
-//
-//    Thread.sleep(2000);
-//
-// //for uploading lottie file
-//driver.findElement(By.xpath("//body[1]/div[1]/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[2]/div[1]/div[1]/div[2]")).click();
-//    Robot rb =new Robot();
-//    rb.delay(2000);
-//
-//    StringSelection ss= new StringSelection("file:///C:/Users/Admin/Downloads/sample1.json");
-//    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss,null);
-//
-//// to paste the link & then to release the button
-//    rb.keyPress(KeyEvent.VK_CONTROL);
-//    rb.keyPress(KeyEvent.VK_V);
-//    rb.delay(2000);
-//
-//    rb.keyRelease(KeyEvent.VK_CONTROL);
-//    rb.keyRelease(KeyEvent.VK_V);
-//    rb.delay(2000);
-//
-//    //Enter
-//    rb.keyPress(KeyEvent.VK_ENTER);
-//    rb.keyRelease(KeyEvent.VK_ENTER);
-//
-//
-//driver.findElement(By.xpath("//body[1]/div[1]/div[1]/div[2]/div[1]/main[1]/div[1]/div[1]/div[1]/div[1]/div[1]/form[1]/div[1]/div[4]/div[3]/div[1]/div[1]/div[3]/div[1]")).click();
-//    Robot rb1 =new Robot();
-//    rb1.delay(2500);
-//
-//    StringSelection ss1= new StringSelection("C:\\Users\\Admin\\Downloads\\Yoga image.jpg");
-//    Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss1,null);
-//
-//    rb1.keyPress(KeyEvent.VK_CONTROL);
-//    rb1.keyPress(KeyEvent.VK_V);
-//    rb1.delay(2000);
-//
-//    rb1.keyRelease(KeyEvent.VK_CONTROL);
-//    rb1.keyRelease(KeyEvent.VK_V);
-//    rb1.delay(2000);
-////Enter
-//    rb1.keyPress(KeyEvent.VK_ENTER);
-//    rb1.keyRelease(KeyEvent.VK_ENTER);
-//
-//    driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
-//
-//    }
-//}
 
 
 

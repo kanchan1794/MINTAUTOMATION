@@ -7,8 +7,11 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = {"src/test/java/Featurefiles"},
         glue={"Stepdefinition"},
-        //tags ="@Login or @Organization or @ViewOrganization or @Vieworganizationsubmenu or @Organizationstatusmenu "
-        tags="@Login or @Practitioner"
+        plugin = {"json:target/cucumber.json"},
+        //tags ="@Login or @Organization or @ViewOrganization or @Vieworganizationsubmenu or @Organizationstatusmenu @activities or @AddActivities or @Practitioner "
+        tags="@EmployeeLogin or @Attendance or @Myattendance"
+        //tags= "@EmployeeLogin or @Attendance or @Myattendance or @AddressBook @MyTeam or @Events&calendar or   @MyPayslip or @MyDocument or @Documents or @OrganizationDocument or @leave or @ApplyforLeave "
+
 
 )
 

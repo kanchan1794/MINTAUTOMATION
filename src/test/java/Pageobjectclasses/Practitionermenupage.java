@@ -1,9 +1,13 @@
 package Pageobjectclasses;
 
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.time.Duration;
 
 public class Practitionermenupage extends Browser{
 
@@ -33,15 +37,44 @@ public void Practitioner_Persons() throws Exception{
 
     }
 
-    public void Superadmin_can_add_details(){
+    public void Superadmin_can_add_details()throws Exception{
 
-        driver.findElement(By.xpath("//input[@id='full_name']")).sendKeys("Aniket");
-        driver.findElement(By.xpath("//input[@id='email']")).sendKeys("aniket01@gmail.com");
+        driver.findElement(By.xpath("//input[@id='full_name']")).sendKeys("Nikhita");
+        driver.findElement(By.xpath("//input[@id='email']")).sendKeys("Nikhita01@gmail.com");
         driver.findElement( By.xpath("//input[@id='description']")).sendKeys("ABCD");
 
-        driver.findElement(By.id("react-select-2-input")).click();
-//        Select drpskill= new Select(driver.findElement(By.id("react-select-2-input")));
-//        drpskill.selectByVisibleText("HTML");
+      WebElement Skill_dropdown =driver.findElement(By.id("skill_set"));
+       Skill_dropdown.click();
+       Robot robot = new Robot();
+
+        // Press down arrow key three times to navigate to the 3rd option
+        for (int i = 0; i < 1; i++) {
+            robot.keyPress(KeyEvent.VK_DOWN);
+            Thread.sleep(1000); // Add a small delay between key presses
+            robot.keyRelease(KeyEvent.VK_DOWN);
+        }
+
+        //Press Enter to select the option
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
+
+
+        //div[@class=' css-taurng-control']
+
+//        WebElement dropdown_element= driver.findElement(By.id("skill_set"));
+//        Select dropdown = new Select(dropdown_element);
+//        dropdown.selectByVisibleText("HTML");
+
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+//        Select Skillset = new Select(driver.findElement(By.id("skill_set")));
+//        js.executeScript("arguments[0].scrollIntoView();", driver.findElement(By.id("skill_set")));
+//        Skillset.selectByVisibleText("CSS");
+
+        driver.findElement(By.id("qualification")).sendKeys("B.Tech");
+        driver.findElement(By.xpath("//button[contains(text(),'Submit')]")).click();
+
 
     }
 
